@@ -11,12 +11,9 @@ local ui_options = {
 	can_resize = true,
 }
 
-do
-	local imgui = game:GetService("CoreGui"):FindFirstChild(imgui)
-	if imgui then imgui:Destroy() end
-end
-
-local imgui = Instance.new("ScreenGui")
+local imgui = Instance.new("ScreenGui", workspace)
+pcall(function() syn.protect_gui(imgui) end)
+imgui.DisplayOrder = 1
 local Prefabs = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
 local Window = Instance.new("ImageLabel")
@@ -89,7 +86,24 @@ local Input = Instance.new("TextButton")
 local Input_Roundify_4px = Instance.new("ImageLabel")
 local Windows = Instance.new("Frame")
 
-imgui.Name = "imgui"
+local Chars = {
+    {48, 57},
+    {65, 90},
+    {97, 122},
+}
+
+function randomstring(n)
+    local str= ""
+    if n and type(n) == "number" then
+        for i = 1,n do
+            local Select = Chars[math.random(1,#Chars)]
+            str= str..string.char(math.random(Select[1], Select[2]))
+        end
+    end
+    return str
+end
+
+imgui.Name = randomstring(math.random(6,16))
 imgui.Parent = game:GetService("CoreGui")
 
 Prefabs.Name = "Prefabs"
@@ -826,15 +840,6 @@ local checks = {
 	["binding"] = false,
 }
 
-UIS.InputBegan:Connect(function(input, gameProcessed)
-	if input.KeyCode == ((typeof(ui_options.toggle_key) == "EnumItem") and ui_options.toggle_key or Enum.KeyCode.RightShift) then
-		if script.Parent then
-			if not checks.binding then
-				script.Parent.Enabled = not script.Parent.Enabled
-			end
-		end
-	end
-end)
 
 local function Resize(part, new, _delay)
 	_delay = _delay or 0.5
@@ -1340,7 +1345,7 @@ function library:AddWindow(title, options)
 
 							function slider_data:Set(new_value)
 								new_value = tonumber(new_value) or 0
-								new_value = (((new_value >= 0 and new_value <= 100) and new_value) / 100)
+								new_value = (new_value >= 0 and new_value <= 100) and new_value / 100
 
 								Resize(indicator, {Size = UDim2.new(new_value or 0, 0, 0, 20)}, options.tween_time)
 								local p = math.floor((new_value or 0) * 100)
