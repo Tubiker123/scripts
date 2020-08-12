@@ -12,7 +12,6 @@ local ui_options = {
 }
 
 local imgui = Instance.new("ScreenGui", workspace)
-pcall(function() syn.protect_gui(imgui) end)
 imgui.DisplayOrder = 1
 local Prefabs = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
