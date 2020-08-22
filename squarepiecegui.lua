@@ -75,6 +75,7 @@ end)
 
 tab3:AddButton("Hide character and name", function()
     player.Character.HumanoidRootPart:FindFirstChild("OverheadUI"):Destroy()
+    player.Character.Head:FindFirstChild("face"):Destroy()
     for i,v in pairs(player.Character:children()) do
         if v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "Accessory" or v.ClassName == "ShirtGraphic" then
             v:Destroy()
