@@ -1,4 +1,7 @@
--- made by gS
+--[[ 
+    made by gS
+]]
+
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/test.lua"))()
 
 local target,btn,quest,bv,val,remote,number
