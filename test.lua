@@ -4,19 +4,8 @@
 	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
 --]]
 
-local ui_options = {
-	main_color = Color3.fromRGB(41, 74, 122),
-	min_size = Vector2.new(400, 300),
-	toggle_key = Enum.KeyCode.RightShift,
-	can_resize = true,
-}
-
-do
-	local imgui = game:GetService("CoreGui"):FindFirstChild("imgui")
-	if imgui then imgui:Destroy() end
-end
-
 local imgui = Instance.new("ScreenGui")
+pcall(function() syn.protect_gui(imgui) end)
 local Prefabs = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
 local Window = Instance.new("ImageLabel")
@@ -89,7 +78,16 @@ local Input = Instance.new("TextButton")
 local Input_Roundify_4px = Instance.new("ImageLabel")
 local Windows = Instance.new("Frame")
 
-imgui.Name = "imgui"
+function randomString()
+	local length = math.random(10,20)
+	local array = {}
+	for i = 1, length do
+	    array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
+
+imgui.Name = randomString()
 imgui.Parent = game:GetService("CoreGui")
 
 Prefabs.Name = "Prefabs"
