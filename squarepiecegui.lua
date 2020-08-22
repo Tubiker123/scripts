@@ -123,7 +123,7 @@ spawn(function()
     while true do
         if chest then
             for i,v in pairs(workspace.Map.Islands:GetDescendants()) do
-                if v.ClassName == "ClickDetector" and v.Parent.Name == "ClickDetectorPart" then
+                if v.ClassName == "ClickDetector" and tostring(v) == "ClickDetectorPart" then
                     player.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Parent.CFrame
                     fireclickdetector(v)
                     wait()
