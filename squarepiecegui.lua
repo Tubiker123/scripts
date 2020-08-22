@@ -172,12 +172,11 @@ while true do
                         for x = 1, player.Stats.Quests.Value do
                             game:GetService("ReplicatedStorage").Remotes.quest:FireServer(
                                 "Accept",
-                                    {
-                                        ["Index"] = questn,
-                                        ["Model"] = workspace.Interactables[quest][quest]
-                                    }
-                                )
-                            wait()
+                                {
+                                    ["Index"] = questn,
+                                    ["Model"] = workspace.Interactables[quest][quest]
+                                }
+                            )
                         end
                     repeat heartbeat:wait() until player.Quests2:FindFirstChildOfClass("Folder")
                     target = player.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
