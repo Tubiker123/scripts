@@ -1,15 +1,20 @@
---[[ 
-    made by gS
+--[[
+    Made by gS
 ]]
 
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
 
-local target,btn,quest,bv,val,remote,number
-local style = "Fighting Style" -- default
+local target,btn,quest,bv,questn
+local style = "Fighting Style"
 local player = game:GetService("Players").LocalPlayer
-local chest,farm,deb,infdash = false,false,false,false
-
+local chest = false
+local farm = false
+local deb = false
+local val
+local infdash = false
 local heartbeat = game:GetService("RunService").Heartbeat
+local remote,number
+
 local gui = library:AddWindow("Square Piece", {
     main_color = Color3.fromRGB(0,206,209),
     min_size = Vector2.new(395, 315),
@@ -19,10 +24,16 @@ local gui = library:AddWindow("Square Piece", {
 local tab1 = gui:AddTab("Auto-Farm")
 local tab3 = gui:AddTab("Misc")
 
-tab1:AddLabel("Auto Quest")
+tab1:AddLabel("Quest")
 local drop = tab1:AddDropdown("Select", function(opt)
     quest = opt
 end)
+
+tab1:AddLabel("Quest number")
+local drop4 = tab1:AddDropdown("Select", function(opt)
+    questn = tonumber(opt)
+end)
+for i = 1, 3 do drop4:Add(i) end
 
 tab1:AddLabel("Combat style")
 local drop2=tab1:AddDropdown("[ Combat ]", function(opt)
@@ -75,6 +86,7 @@ tab3:AddButton("Hide character and name", function()
         end
     end
 end)
+
 library:FormatWindows()
 tab1:Show()
 
@@ -120,7 +132,7 @@ spawn(function()
     while true do
         if chest then
             for i,v in pairs(workspace.Map.Islands:GetDescendants()) do
-                if v.ClassName == "ClickDetector" and tostring(v.Parent) == "ClickDetectorPart" then
+                if v.ClassName == "ClickDetector" and v.Parent.Name == "ClickDetectorPart" then
                     player.Character:FindFirstChild("HumanoidRootPart").CFrame = v.Parent.CFrame
                     fireclickdetector(v)
                     wait()
@@ -165,11 +177,11 @@ while true do
                 elseif not player.Quests2:FindFirstChildOfClass("Folder") then
                     player.Character:FindFirstChild("HumanoidRootPart").CFrame = workspace.Interactables[quest].HumanoidRootPart.CFrame + workspace.Interactables[quest].HumanoidRootPart.CFrame.lookVector * -3
                     wait(.5)
-                        for x = 0, player.Stats.Quests.Value do
+                        for x = 1, player.Stats.Quests.Value do
                             game:GetService("ReplicatedStorage").Remotes.quest:FireServer(
                                 "Accept",
                                     {
-                                        ["Index"] = 1, -- you can change this to 2 or 3 if you're doing the quest dummy 1
+                                        ["Index"] = questn,
                                         ["Model"] = workspace.Interactables[quest][quest]
                                     }
                                 )
