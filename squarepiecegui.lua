@@ -1,7 +1,7 @@
 -- made by gS
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/test.lua"))()
 local target,btn,quest,bv
-local style = "Fighting Style"
+local style = "Fighting Style" -- default
 local player = game:GetService("Players").LocalPlayer
 local chest = false
 local farm = false
@@ -45,7 +45,7 @@ btn = tab1:AddButton("Start", function()
         btn.Text = "Stop"
     else
         if number == nil or remote == nil then
-            player:Kick("remote failure")
+            player:Kick("failed to find the remote")
         end
         btn.Text = "Start"
         farm = false
