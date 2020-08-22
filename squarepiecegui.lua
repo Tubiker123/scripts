@@ -4,16 +4,11 @@
 
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
 
-local target,btn,quest,bv,questn
+local target,btn,quest,bv,questn,val,remote,number
 local style = "Fighting Style"
 local player = game:GetService("Players").LocalPlayer
-local chest = false
-local farm = false
-local deb = false
-local val
-local infdash = false
+local chest,farm,deb,infdash = false,false,false,false
 local heartbeat = game:GetService("RunService").Heartbeat
-local remote,number
 
 local gui = library:AddWindow("Square Piece", {
     main_color = Color3.fromRGB(0,206,209),
@@ -118,13 +113,9 @@ end)
 
 for i,v in pairs(workspace.Interactables:children()) do
     if tostring(v):match("Quest") then
-        drop:Add(tostring(v))
-    end
-end
-
-for i,v in pairs(workspace.Interactables:children()) do
-    if not tostring(v):match("Quest") then
-        drop3:Add(tostring(v))
+        drop:Add(v)
+    else
+        drop3:Add(v)
     end
 end
 
