@@ -2,7 +2,7 @@
     made by gS
 ]]
 
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/test.lua"))()
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
 
 local target,btn,quest,bv,val,remote,number
 local style = "Fighting Style" -- default
