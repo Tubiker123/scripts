@@ -1,15 +1,12 @@
 -- made by gS
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/test.lua"))()
-local target,btn,quest,bv
+
+local target,btn,quest,bv,val,remote,number
 local style = "Fighting Style" -- default
 local player = game:GetService("Players").LocalPlayer
-local chest = false
-local farm = false
-local deb = false
-local val
-local infdash = false
+local chest,farm,deb,infdash = false,false,false,false
+
 local heartbeat = game:GetService("RunService").Heartbeat
-local remote,number
 local gui = library:AddWindow("Square Piece", {
     main_color = Color3.fromRGB(0,206,209),
     min_size = Vector2.new(395, 315),
