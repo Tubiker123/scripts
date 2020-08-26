@@ -90,6 +90,17 @@ player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
+local mt = getrawmetatable(game) 
+local old = mt.__namecall
+setreadonly(mt, false)
+
+mt.__namecall = newcclosure(function(self, ...)
+    if getnamecallmethod() == "InvokeServer" and tostring(self) == "requestDash" and infdash then
+        return ""
+    end
+    return old(self, ...)
+end)
+
 for i,v in pairs(getgc()) do
     if type(v) == "function" and getfenv(v).script == player.PlayerScripts.Client["Tool Handler"] and getinfo(v).name == "fireRemote" then
         remote = v
