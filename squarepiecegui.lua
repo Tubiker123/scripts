@@ -4,10 +4,9 @@
 
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
 
-local target,btn,quest,bv,questn,val,remote,number
+local target,btn,quest,bv,questn,val,remote,chest,farm,deb,infdash
 local style = "Fighting Style"
 local player = game:GetService("Players").LocalPlayer
-local chest,farm,deb,infdash = false,false,false,false
 local heartbeat = game:GetService("RunService").Heartbeat
 
 local gui = library:AddWindow("Square Piece", {
@@ -46,11 +45,11 @@ end, { ["min"] = 0, ["max"] = 8 })
 slider:Set(90)
 
 btn = tab1:AddButton("Start", function()
-    if not farm and number ~= nil and remote ~= nil then
+    if not farm and remote then
         farm = true
         btn.Text = "Stop"
     else
-        if number == nil or remote == nil then
+        if not remote then
             player:Kick("failed to find the remote")
         end
         btn.Text = "Start"
@@ -91,22 +90,11 @@ player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
-local mt = getrawmetatable(game)
-local old = mt.__namecall
-local args
-setreadonly(mt, false)
-
-mt.__namecall = newcclosure(function(self, ...)
-    args = {...}
-    if getnamecallmethod() == "FireServer" and remote == nil and typeof(args[1]) == "string" and typeof(args[2]) == "string" and typeof(args[3]) == "CFrame" and typeof(args[4]) == "number" and #args <= 4 then
-        remote = self
-        number = args[4]
-        return old(self, ...)
-    elseif getnamecallmethod() == "InvokeServer" and tostring(self) == "requestDash" and infdash then
-        return ""
+for i,v in pairs(getgc()) do
+    if type(v) == "function" and getfenv(v).script == player.PlayerScripts.Client["Tool Handler"] and getinfo(v).name == "fireRemote" then
+        remote = v
     end
-    return old(self, ...)
-end)
+end
 
 player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
@@ -135,21 +123,11 @@ spawn(function()
     end
 end)
 
-spawn(function()
-    for i,v in pairs(player.Backpack:children()) do
-        if v.ClassName == "Tool" and #v:children() == 0 then
-            player.Character.Humanoid:EquipTool(v)
-            player.Character:WaitForChild(v.Name, 30) wait(.5)
-            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0, 500, 0, true, game, 1)
-        end
-    end
-end)
-
 local function attack()
     if not deb then
         deb = true
         spawn(function()
-            remote:FireServer(style, "MouseButton1", workspace.Camera.CFrame, number)
+            remote(style, "MouseButton1", workspace.Camera.CFrame)
             wait(.2)
             deb = false
         end)
@@ -161,7 +139,7 @@ while true do
         pcall(function()
             for i,v in pairs(workspace.Entities:children()) do
                 if player.Stats.Armament.Value and not player.Character:FindFirstChild("LeftArmHaki") then
-                    remote:FireServer("Fighting Style", "G", workspace.Camera.CFrame, number)
+                    remote("Fighting Style", "G", workspace.Camera.CFrame)
                 elseif not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChildOfClass("BodyVelocity") then
                     bv = Instance.new("BodyVelocity", player.Character.HumanoidRootPart)
                     bv.Velocity = Vector3.new(0,0,0)
