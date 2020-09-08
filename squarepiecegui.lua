@@ -4,7 +4,7 @@
 
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
 
-local target,btn,quest,bv,questn,val,remote,chest,farm,deb,infdash
+local target,btn,quest,bv,questn,val,remote,chest,farm,deb,infdash,mob
 local style = "Fighting Style"
 local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
@@ -112,6 +112,25 @@ player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
+local function findnpc()
+    for i,v in pairs(workspace.Entities:children()) do
+        if v:FindFirstChild("Humanoid").Health > 0 and tostring(v) ~= tostring(player) and tostring(v) == target then
+            return v
+        end
+    end
+end
+
+local function attack()
+    if not deb then
+        deb = true
+        spawn(function()
+            remote(style, "MouseButton1", workspace.Camera.CFrame, workspace.Map.Islands["Mystifine's Village"].Model.Part)
+            wait(.1)
+            deb = false
+        end)
+    end
+end
+
 for i,v in pairs(workspace.Interactables:children()) do
     if tostring(v):match("Quest") then
         drop:Add(v)
@@ -135,51 +154,37 @@ spawn(function()
     end
 end)
 
-local function attack()
-    if not deb then
-        deb = true
-        spawn(function()
-            remote(style, "MouseButton1", workspace.Camera.CFrame, workspace.Map.Islands["Mystifine's Village"].Model.Part)
-            wait(.1)
-            deb = false
-        end)
-    end
-end
-
 while true do
     if farm then
         pcall(function()
-            for i,v in pairs(workspace.Entities:children()) do
-                if playerstats.Stats.Armament.Value and not player.Character:FindFirstChild("HakiPiece") then
-                    remote("Fighting Style", "G", workspace.Camera.CFrame, workspace.Map.Islands["Mystifine's Village"].Model.Part)
-                elseif not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChildOfClass("BodyVelocity") then
-                    bv = Instance.new("BodyVelocity", player.Character.HumanoidRootPart)
-                    bv.Velocity = Vector3.new(0,0,0)
-                    bv.MaxForce = Vector3.new(9e9,9e9,9e9)
-                elseif not playerstats.Quests2:FindFirstChildOfClass("Folder") then
-                    player.Character:FindFirstChild("HumanoidRootPart").CFrame = workspace.Interactables[quest].HumanoidRootPart.CFrame + workspace.Interactables[quest].HumanoidRootPart.CFrame.lookVector * -3
-                    wait(.5)
-                        for x = 1, playerstats.Stats.Quests.Value do
-                            game:GetService("ReplicatedStorage").Remotes.quest:FireServer(
-                                "Accept",
-                                {
-                                    ["Index"] = questn,
-                                    ["Model"] = workspace.Interactables[quest][quest]
-                                }
-                            )
-                        end
-                    repeat heartbeat:wait() until playerstats.Quests2:FindFirstChildOfClass("Folder")
-                    target = playerstats.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
-                else
-                    target = playerstats.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
-                end          
-                if v:FindFirstChild("Humanoid").Health > 0 and v.Name ~= player.Name and tostring(v) == target then
-                    while v:FindFirstChild("Humanoid").Health > 0 and player.Character:FindFirstChild("Humanoid").Health > 0 and farm do
-                        player.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame + v.HumanoidRootPart.CFrame.lookVector * (val * -1)
-                        attack()
-                        heartbeat:wait()
+            mob = findnpc()
+            if playerstats.Stats.Armament.Value and not player.Character:FindFirstChild("HakiPiece") then
+                remote("Fighting Style", "G", workspace.Camera.CFrame, workspace.Map.Islands["Mystifine's Village"].Model.Part)
+            elseif not player.Character:FindFirstChild("HumanoidRootPart"):FindFirstChildOfClass("BodyVelocity") then
+                bv = Instance.new("BodyVelocity", player.Character.HumanoidRootPart)
+                bv.Velocity = Vector3.new(0,0,0)
+                bv.MaxForce = Vector3.new(9e9,9e9,9e9)
+            elseif not playerstats.Quests2:FindFirstChildOfClass("Folder") then
+                player.Character:FindFirstChild("HumanoidRootPart").CFrame = workspace.Interactables[quest].HumanoidRootPart.CFrame + workspace.Interactables[quest].HumanoidRootPart.CFrame.lookVector * -3
+                wait(.5)
+                    for x = 1, playerstats.Stats.Quests.Value do
+                        game:GetService("ReplicatedStorage").Remotes.quest:FireServer(
+                            "Accept",
+                            {
+                                ["Index"] = questn,
+                                ["Model"] = workspace.Interactables[quest][quest]
+                            }
+                        )
                     end
-                end
+                repeat heartbeat:wait() until playerstats.Quests2:FindFirstChildOfClass("Folder")
+                target = playerstats.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
+            else
+                target = playerstats.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
+            end          
+            while mob:FindFirstChild("Humanoid").Health > 0 and player.Character:FindFirstChild("Humanoid").Health > 0 and farm do
+                player.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame + mob.HumanoidRootPart.CFrame.lookVector * (val * -1)
+                attack()
+                heartbeat:wait()
             end
         end)
     end
