@@ -65,12 +65,12 @@ local drop3 = tab3:AddDropdown("Select", function(opt)
     player.Character:FindFirstChild("HumanoidRootPart").CFrame = workspace.Interactables[opt].HumanoidRootPart.CFrame + workspace.Interactables[opt].HumanoidRootPart.CFrame.lookVector * 5
 end)
 
-tab3:AddSwitch("Chest TP", function()
-    if not chest then chest = true else chest = false end
+tab3:AddSwitch("Chest TP", function(bool)
+    chest = bool
 end)
 
-tab3:AddSwitch("Inf dash and jump", function()
-    if not infdash then infdash = true else infdash = false end
+tab3:AddSwitch("Inf dash and jump", function(bool)
+    infdash = bool
 end)
 
 tab3:AddButton("Hide character and name", function()
@@ -168,7 +168,7 @@ while true do
                                 }
                             )
                         end
-                    repeat heartbeat:wait() until game:GetService("ReplicatedStorage").PlayerData[player.Name].Quests2:FindFirstChildOfClass("Folder")
+                    repeat heartbeat:wait() until playerstats.Quests2:FindFirstChildOfClass("Folder")
                     target = playerstats.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
                 else
                     target = playerstats.Quests2:FindFirstChildOfClass("Folder"):WaitForChild("Target").Value
