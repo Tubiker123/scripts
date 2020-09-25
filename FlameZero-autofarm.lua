@@ -87,7 +87,7 @@ end)
 spawn(function()
     while true do 
         pcall(function()
-            if farm and (player.PlayerFolder.QuestProgress.Value == player.PlayerFolder.QuestMax.Value or player.PlayerFolder.QuestMax.Value == 0) then
+            if farm and player.PlayerFolder.QuestMax.Value == 0 then
                player.Character.HumanoidRootPart.CFrame = workspace.NPCS[quest].HumanoidRootPart.CFrame
                remotes.Player.NPCChat:FireServer("Re-Do", quest)
             end
