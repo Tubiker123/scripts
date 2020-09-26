@@ -4,6 +4,8 @@ local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
 local remotes = game:GetService("ReplicatedStorage").Remotes
 local targ,quest,btn,farm,weap,run
+local mt, old = getrawmetatable(game), mt.__newindex
+setreadonly(mt, false)
 
 local gui = library:AddWindow("Flame Zero Auto Farm", {
     main_color = Color3.fromRGB(255, 69, 0),
@@ -72,10 +74,6 @@ player.PlayerGui.DeathScreen.Enabled = false
 player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
-
-local mt = getrawmetatable(game)
-local old = mt.__newindex
-setreadonly(mt, false)
 
 mt.__newindex = newcclosure(function(self, thing, a)
     if thing == "Health" and not checkcaller() then
