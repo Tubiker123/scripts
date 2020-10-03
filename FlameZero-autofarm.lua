@@ -83,12 +83,10 @@ end)
 
 spawn(function()
     while true do 
-        pcall(function()
-            if farm and player.PlayerFolder.QuestMax.Value == 0 then
-               player.Character.HumanoidRootPart.CFrame = workspace.NPCS[quest].HumanoidRootPart.CFrame
-               remotes.Player.NPCChat:FireServer("Re-Do", quest)
-            end
-        end)
+        if player.Character:FindFirstChild("Humanoid").Health > 0 and farm and player.PlayerFolder.QuestMax.Value == 0 then
+           player.Character.HumanoidRootPart.CFrame = workspace.NPCS[quest].HumanoidRootPart.CFrame
+           remotes.Player.NPCChat:FireServer("Re-Do", quest)
+        end
         wait()
     end
 end)
