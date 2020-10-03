@@ -1,12 +1,12 @@
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
     
 local gui = library:AddWindow("My Hero Mania Auto Farm", {
-    main_color = Color3.fromRGB(0,255,0),
-    min_size = Vector2.new(393, 338),
+    main_color = Color3.fromRGB(0,255,127),
+    min_size = Vector2.new(360, 315),
     can_resize = false
 })
 
-local punch, skill = game:GetService("ReplicatedStorage").Package.Events.Combat, game:GetService("ReplicatedStorage").Package.Events.Skill
+local punch = game:GetService("ReplicatedStorage").Package.Events.Combat
 local heartbeat = game:GetService("RunService").Heartbeat
 local questgiver,mob,farm,btn,run,bv,autoquest
 local player = game:GetService("Players").LocalPlayer
@@ -53,9 +53,12 @@ spawn(function()
 
             if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
                 player.Character.HumanoidRootPart.Title:Destroy()
+		        player.Character.Head.face:Destroy()
                 for i,v in pairs(player.Character:children()) do
                     if v.ClassName == "Accessory" or v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "ShirtGraphic" then
                         v:Destroy()
+                    elseif v.ClassName == "Part" or v.ClassName == "MeshPart" then
+                        v.Transparency = 1
                     end
                 end
             end
