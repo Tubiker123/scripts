@@ -1,7 +1,7 @@
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
     
 local gui = library:AddWindow("My Hero Mania Auto Farm", {
-    main_color = Color3.fromRGB(0,0,0),
+    main_color = Color3.fromRGB(0,255,0),
     min_size = Vector2.new(393, 338),
     can_resize = false
 })
