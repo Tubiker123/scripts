@@ -36,7 +36,7 @@ local tab = gui:AddTab("Main")
 
 tab:AddLabel("NPC")
 local drop = tab:AddDropdown("Select", function(opt)
-    targ, quest = opt, rawget(npcs, targ)
+    targ, quest = opt, rawget(npcs, opt)
 end)
 
 for i,v in pairs(npcs) do
