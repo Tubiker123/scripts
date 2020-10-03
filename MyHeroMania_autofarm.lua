@@ -15,14 +15,15 @@ local tab1 = gui:AddTab("Farm")
 
 tab1:AddLabel("Quest")
 local drop = tab1:AddDropdown("Select", function(opt)
-    questgiver, mob = rawget(quests, opt), opt
+    questgiver, mob = opt, rawget(quests, opt)
+    print(questgiver,mob)
 end)
 local s = tab1:AddSwitch("Auto Quest", function(bool) autoquest = bool end) s:Set(true)
 
 for i,v in pairs(game:GetService("ReplicatedStorage").Package.Quests:children()) do
-    table.insert(quests, v.Target.Value)
-    rawset(quests, v.Target.Value, v.Giver.Value)
-    drop:Add(v.Target.Value)
+    table.insert(quests, tostring(v))
+    rawset(quests, tostring(v), v.Target.Value)
+    drop:Add(tostring(v))
 end
 
 btn = tab1:AddButton("Start", function()
@@ -41,6 +42,11 @@ tab1:Show()
 spawn(function()
     while true do
         pcall(function()
+            if farm and not player.PlayerGui.HUD.Frames.Quest.Visible and autoquest then
+                game:GetService("ReplicatedStorage").Package.Events.GetQuest:InvokeServer(questgiver)
+                player.PlayerGui.HUD.Frames.Quest.Visible = true
+            end
+
             if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
                 player.Character.HumanoidRootPart.Title:Destroy()
                 for i,v in pairs(player.Character:children()) do
@@ -58,16 +64,11 @@ while true do
     if farm then
         pcall(function()
             for i,v in pairs(workspace.Living:children()) do
-                if not player.PlayerGui.HUD.Frames.Quest.Visible and autoquest then
-                    game:GetService("ReplicatedStorage").Package.Events.GetQuest:InvokeServer(mob.."s")
-                    player.PlayerGui.HUD.Frames.Quest.Visible = true
-                else
-                    if v.Humanoid.Health > 0 and tostring(v) == mob then
-                        while v.Humanoid.Health > 0 and player.Character.Humanoid.Health > 0 and farm do
-                            player.Character.HumanoidRootPart.CFrame = (v.HumanoidRootPart.CFrame * CFrame.new(0,-11,0)) * CFrame.Angles(-80,0,0)
-                            punch:FireServer(math.random(3,4), CFrame.new())
-                            heartbeat:wait()
-                        end
+                if v.Humanoid.Health > 0 and tostring(v) == mob then
+                    while v.Humanoid.Health > 0 and player.Character.Humanoid.Health > 0 and farm do
+                        player.Character.HumanoidRootPart.CFrame = (v.HumanoidRootPart.CFrame * CFrame.new(0,-9,0)) * CFrame.Angles(-80,0,0)
+                        punch:FireServer(math.random(3,4), CFrame.new())
+                        heartbeat:wait()
                     end
                 end
             end
