@@ -16,7 +16,6 @@ local tab1 = gui:AddTab("Farm")
 tab1:AddLabel("Quest")
 local drop = tab1:AddDropdown("Select", function(opt)
     questgiver, mob = opt, rawget(quests, opt)
-    print(questgiver,mob)
 end)
 local s = tab1:AddSwitch("Auto Quest", function(bool) autoquest = bool end) s:Set(true)
 
