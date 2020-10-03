@@ -83,11 +83,13 @@ mt.__newindex = newcclosure(function(self, thing, a)
 end)
 
 spawn(function()
-    while true do 
-        if farm and player.Character:FindFirstChild("Humanoid").Health > 0 and player.PlayerFolder.QuestMax.Value == 0 then
-           player.Character.HumanoidRootPart.CFrame = workspace.NPCS[quest].HumanoidRootPart.CFrame
-           remotes.Player.NPCChat:FireServer("Re-Do", quest)
-        end
+    while true do
+        pcall(function()
+            if farm and player.PlayerFolder.QuestMax.Value == 0 then
+                player.Character.HumanoidRootPart.CFrame = workspace.NPCS[quest].HumanoidRootPart.CFrame
+                remotes.Player.NPCChat:FireServer("Re-Do", quest)
+            end
+        end)
         wait()
     end
 end)
