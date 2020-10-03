@@ -39,6 +39,10 @@ end)
 library:FormatWindows()
 tab1:Show()
 
+player.Idled:connect(function()
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+
 spawn(function()
     while true do
         pcall(function()
