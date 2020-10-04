@@ -22,16 +22,16 @@ local s = tab1:AddSwitch("Auto Quest", function(bool) autoquest = bool end) s:Se
 for i,v in pairs(game:GetService("ReplicatedStorage").Package.Quests:children()) do
     table.insert(quests, tostring(v))
     rawset(quests, tostring(v), v.Target.Value)
-    drop:Add(tostring(v))
+    drop:Add(v)
 end
 
 btn = tab1:AddButton("Start", function()
     if not farm then 
-        btn.Text,farm = "Stop", true
+        btn.Text, farm = "Stop", true
         run = game:GetService("RunService").Stepped:connect(function() pcall(function() player.Character.Humanoid:ChangeState(11) end) end) 
     else 
         run:Disconnect()
-        btn.Text,farm = "Start", false
+        btn.Text,f arm = "Start", false
     end
 end)
 
@@ -49,7 +49,6 @@ spawn(function()
                 game:GetService("ReplicatedStorage").Package.Events.GetQuest:InvokeServer(questgiver)
                 player.PlayerGui.HUD.Frames.Quest.Visible = true
             end
-
             if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
                 player.Character.HumanoidRootPart.Title:Destroy()
 		player.Character.Head.face:Destroy()
