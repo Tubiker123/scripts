@@ -31,7 +31,7 @@ btn = tab1:AddButton("Start", function()
         run = game:GetService("RunService").Stepped:connect(function() pcall(function() player.Character.Humanoid:ChangeState(11) end) end) 
     else 
         run:Disconnect()
-        btn.Text,f arm = "Start", false
+        btn.Text, farm = "Start", false
     end
 end)
 
