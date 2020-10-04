@@ -19,7 +19,7 @@ end)
 local s = tab1:AddSwitch("Auto Quest", function(bool) autoquest = bool end) s:Set(true)
 
 for i,v in pairs(game:GetService("ReplicatedStorage").Package.Quests:children()) do
-    drop:Add(tostring(v))
+    drop:Add(v)
 end
 
 btn = tab1:AddButton("Start", function()
