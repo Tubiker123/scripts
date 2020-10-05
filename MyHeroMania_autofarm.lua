@@ -52,8 +52,6 @@ spawn(function()
                 for i,v in pairs(player.Character:children()) do
                     if v.ClassName == "Accessory" or v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "ShirtGraphic" then
                         v:Destroy()
-                    elseif v.ClassName == "Part" or v.ClassName == "MeshPart" then
-                        v.Transparency = 1
                     end
                 end
             end
