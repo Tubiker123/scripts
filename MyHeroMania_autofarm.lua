@@ -68,7 +68,7 @@ while true do
             for i,v in pairs(workspace.Living:children()) do
                 if v.Humanoid.Health > 0 and tostring(v) == mob then
                     while v.Humanoid.Health > 0 and player.Character.Humanoid.Health > 0 and farm do
-                        player.Character.HumanoidRootPart.CFrame = (v.HumanoidRootPart.CFrame * CFrame.new(0,-9,0)) * CFrame.Angles(-80,0,0)
+                        player.Character.HumanoidRootPart.CFrame = (v.HumanoidRootPart.CFrame * CFrame.new(0,7,0)) * CFrame.Angles(80,0,0)
                         punch:FireServer(math.random(3,4), CFrame.new())
                         heartbeat:wait()
                     end
