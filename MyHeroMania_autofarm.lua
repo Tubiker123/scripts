@@ -49,6 +49,7 @@ spawn(function()
             if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
                 player.Character.HumanoidRootPart.Title:Destroy()
 		player.Character.Head.face:Destroy()
+		player.Character.HumanoidRootPart.TouchInterest:Destroy()
                 for i,v in pairs(player.Character:children()) do
                     if v.ClassName == "Accessory" or v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "ShirtGraphic" then
                         v:Destroy()
