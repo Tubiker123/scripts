@@ -1,6 +1,6 @@
 getgenv().options = {
     autofarm = true,
-    autorank = true -- not done too lazy to get lvl 1000 to discover the rank remote
+    autorank = false -- not done too lazy to get lvl 1000 to discover the rank remote
 }
 
 local player = game:GetService("Players").LocalPlayer
@@ -15,7 +15,7 @@ local function getQuest()
     for i,v in next, workspace.missiongivers:children() do
         if v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then -- get defeat npc missions
             return v
-        elseif v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799" and player.statz.lvl.lvl.Value >= 700 then -- get defeat boss missions if your level >= 70
+        elseif v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799" and player.statz.lvl.lvl.Value >= 700 then -- get defeat boss missions if your level >= 700
             return v
         end
     end
