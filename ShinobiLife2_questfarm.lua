@@ -1,3 +1,14 @@
+--[[
+    Made by gS
+
+    Features {
+        [+] Autoquest,
+        [+] Anti tp bypass,
+        [+] Anti afk,
+        [+] Instakill
+    }
+]]
+
 getgenv().options = {
     autofarm = true,
     autorank = false -- not done too lazy to get lvl 1000 to discover the rank remote
