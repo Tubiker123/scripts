@@ -11,7 +11,7 @@
 
 getgenv().options = {
     autofarm = true,
-    autorank = false -- not done too lazy to get lvl 1000 to discover the rank remote
+    autorankup = true
 }
 
 local player = game:GetService("Players").LocalPlayer
@@ -37,6 +37,9 @@ player.Idled:connect(function()
 end)
 
 while getgenv().options.autofarm do
+    if getgenv().options.autorankup and player.statz.lvl.lvl.Value == 1000 then
+        player.startevent:FireServer("rankup")
+    end
     pcall(function()
         if not player.currentmission.Value then
             mobmission = getQuest()
