@@ -24,9 +24,9 @@ end
 
 local function getQuest()
     for i,v in next, workspace.missiongivers:children() do
-        if v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then -- get defeat npc missions
+        if v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241648" then
             return v
-        elseif v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799" and player.statz.lvl.lvl.Value >= 700 then -- get defeat boss missions if your level >= 70
+        elseif v.Name == "" and v.Head.givemission.Enabled and v.Head.givemission.color.Image == "http://www.roblox.com/asset/?id=5459241799" and player.statz.lvl.lvl.Value >= 700 then
             return v
         end
     end
