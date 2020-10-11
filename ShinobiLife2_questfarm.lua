@@ -3,6 +3,7 @@
 
     Features {
         [+] Autoquest,
+        [+] Auto RankUp
         [+] Anti tp bypass,
         [+] Anti afk,
         [+] Instakill
