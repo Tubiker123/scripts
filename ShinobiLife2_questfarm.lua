@@ -2,8 +2,8 @@
     Made by gS
 
     Features {
-        [+] Autoquest,
-        [+] Auto RankUp
+        [+] Auto quest,
+        [+] Auto rank up
         [+] Anti tp bypass,
         [+] Anti afk,
         [+] Instakill
