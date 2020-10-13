@@ -19,9 +19,7 @@ local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
 local mobmission
 
-hookfunction(getrenv().print, function()
-    return fucntion() return end
-end)
+game:GetService("ScriptContext"):SetTimeout(.01)
 
 local function getQuest()
     for i,v in next, workspace.missiongivers:children() do
