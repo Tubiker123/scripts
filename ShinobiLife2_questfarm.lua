@@ -19,7 +19,7 @@ local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
 local mobmission
 
-game.ScriptContext:SetTimeout(.1)
+game:GetService("ScriptContext"):SetTimeout(.25)
 
 local function getQuest()
     for i,v in next, workspace.missiongivers:children() do
