@@ -19,9 +19,7 @@ local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
 local mobmission
 
-if workspace:FindFirstChild("CCoff") then
-    workspace.CCoff:Destroy()
-end
+game.ScriptContext:SetTimeout(.1)
 
 local function getQuest()
     for i,v in next, workspace.missiongivers:children() do
