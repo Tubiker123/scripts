@@ -83,18 +83,17 @@ mt.__newindex = newcclosure(function(self, thing, a)
 end)
 
 spawn(function()
-    while true do
-        pcall(function()
-            if farm and player.PlayerFolder.QuestMax.Value == 0 then
+    while wait() do
+        if farm and player.PlayerFolder.QuestMax.Value == 0 then
+            pcall(function()
                 player.Character.HumanoidRootPart.CFrame = workspace.NPCS[quest].HumanoidRootPart.CFrame
                 remotes.Player.NPCChat:FireServer("Re-Do", quest)
-            end
-        end)
-        wait()
+            end)
+        end
     end
 end)
 
-while true do
+while wait() do
     if farm then
         pcall(function()
             for i,v in pairs(workspace.FightableNPCS:children()) do
@@ -112,5 +111,4 @@ while true do
             end
         end)
     end
-    wait()
 end
