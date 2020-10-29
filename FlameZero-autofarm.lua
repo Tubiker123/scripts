@@ -3,15 +3,12 @@ loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/mas
 local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
 local remotes = game:GetService("ReplicatedStorage").Remotes
-local targ,quest,btn,farm,weap,run
-local mt = getrawmetatable(game)
-local old = mt.__newindex
-setreadonly(mt, false)
+local targ, quest, btn, farm, weap, run, newindex
 
 local gui = library:AddWindow("Flame Zero Auto Farm", {
     main_color = Color3.fromRGB(255, 69, 0),
     min_size = Vector2.new(370, 310),
-    can_resize = true
+    can_resize = false
 })
 
 local npcs = {
@@ -36,10 +33,10 @@ local tab = gui:AddTab("Main")
 
 tab:AddLabel("NPC")
 local drop = tab:AddDropdown("Select", function(opt)
-    targ, quest = opt, rawget(npcs, opt)
+    targ, quest = opt, npcs[opt]
 end)
 
-for i,v in pairs(npcs) do
+for i,v in next, npcs do
     drop:Add(i) 
 end
 
@@ -48,8 +45,8 @@ local drop2 = tab:AddDropdown("Select", function(opt)
     weap = opt
 end)
 
-for i,v in pairs(player.Backpack:children()) do 
-    if v.ClassName == "Tool" and not tostring(v):match("Gen") then 
+for i,v in next, player.Backpack:children() do 
+    if v.ClassName == "Tool" and not v.Name:match("Gen") then 
         drop2:Add(v) 
     end 
 end
@@ -75,12 +72,12 @@ player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
-mt.__newindex = newcclosure(function(self, thing, a)
-    if thing == "Health" and not checkcaller() then
+newindex = hookfunction(getrawmetatable(game).__newindex, newcclosure(function(a, b, c)
+    if b == "Health" and not checkcaller() then
         return
     end
-    return old(self, thing, a)
-end)
+    return newindex(a, b, c)
+end))
 
 spawn(function()
     while wait() do
@@ -96,8 +93,8 @@ end)
 while wait() do
     if farm then
         pcall(function()
-            for i,v in pairs(workspace.FightableNPCS:children()) do
-                if v.Humanoid.Health > 0 and tostring(v) == targ then
+            for i,v in next, workspace.FightableNPCS:children() do
+                if v.Name == targ then
                     while v.Humanoid.Health > 0 and farm and player.Character.Humanoid.Health > 0 do
                         player.Character.HumanoidRootPart.CFrame = (v.HumanoidRootPart.CFrame * CFrame.new(0,5,0)) * CFrame.Angles(80,0,0)
                         if weap == "Combat" then
