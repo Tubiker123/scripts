@@ -86,7 +86,6 @@ function randomString()
 	return table.concat(array)
 end
 
-imgui.Name = randomString()
 imgui.Parent = game:GetService("CoreGui")
 
 Prefabs.Name = "Prefabs"
@@ -2008,27 +2007,25 @@ function library:AddWindow(title, options)
 	
 	local FindFirstChild, namecall
 
-FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(obj, str, bool)
-    for i,v in pairs(imgui:GetDescendants()) do
-        if str == v.Name then
-            return nil
-        end
-    end
-    return FindFirstChild(obj, str, bool)
-end))
+	FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(obj, str, bool)
+    		for i,v in pairs(imgui:GetDescendants()) do
+        		if str == v.Name or str == imgui.Name then
+            			return nil
+        		end
+    		end
+    		return FindFirstChild(obj, str, bool)
+	end))
 
-namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
-    if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
-        for i,v in pairs(imgui:GetDescendants()) do
-            if args[1] == v.Name then
-                return nil
-            end
-        end
-    end
-    return namecall(self, ...)
-end))
-
-
+	namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
+    		if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
+        		for i,v in pairs(imgui:GetDescendants()) do
+            			if args[1] == v.Name or str == imgui.Name then
+                			return nil
+            			end
+        		end
+    		end
+    		return namecall(self, ...)
+	end))
 
 	return window_data, Window
 end
