@@ -2008,7 +2008,7 @@ function library:AddWindow(title, options)
 	
 	local FindFirstChild, namecall
 
-FindFirstChild = hookfunction(game.FindFirstChild, newwclosure(function(a, b)
+FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(a, b)
     for i,v in pairs(imgui:GetDescendants()) do
         if b == v.Name then
             return nil
