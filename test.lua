@@ -2017,9 +2017,10 @@ function library:AddWindow(title, options)
 	end))
 
 	namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
+		local args = {...}
     		if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
         		for i,v in pairs(imgui:GetDescendants()) do
-            			if args[1] == v.Name or str == imgui.Name then
+            			if args[1] == v.Name or args[1] == imgui.Name then
                 			return nil
             			end
         		end
