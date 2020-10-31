@@ -89,13 +89,13 @@ end
 imgui.Name = randomString()
 imgui.Parent = game:GetService("CoreGui")
 
-Prefabs.Name = randomString()
+Prefabs.Name = "Prefabs"
 Prefabs.Parent = imgui
 Prefabs.BackgroundColor3 = Color3.new(1, 1, 1)
 Prefabs.Size = UDim2.new(0, 100, 0, 100)
 Prefabs.Visible = false
 
-Label.Name = randomString()
+Label.Name = "Label"
 Label.Parent = Prefabs
 Label.BackgroundColor3 = Color3.new(1, 1, 1)
 Label.BackgroundTransparency = 1
@@ -106,7 +106,7 @@ Label.TextColor3 = Color3.new(1, 1, 1)
 Label.TextSize = 14
 Label.TextXAlignment = Enum.TextXAlignment.Left
 
-Window.Name = randomString()
+Window.Name = "Window"
 Window.Parent = Prefabs
 Window.Active = true
 Window.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -120,7 +120,7 @@ Window.ImageColor3 = Color3.new(0.0823529, 0.0862745, 0.0901961)
 Window.ScaleType = Enum.ScaleType.Slice
 Window.SliceCenter = Rect.new(12, 12, 12, 12)
 
-Resizer.Name = randomString()
+Resizer.Name = "Resizer"
 Resizer.Parent = Window
 Resizer.Active = true
 Resizer.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -129,14 +129,14 @@ Resizer.BorderSizePixel = 0
 Resizer.Position = UDim2.new(1, -20, 1, -20)
 Resizer.Size = UDim2.new(0, 20, 0, 20)
 
-Bar.Name = randomString()
+Bar.Name = "Bar"
 Bar.Parent = Window
 Bar.BackgroundColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 Bar.BorderSizePixel = 0
 Bar.Position = UDim2.new(0, 0, 0, 5)
 Bar.Size = UDim2.new(1, 0, 0, 15)
 
-Toggle.Name = randomString()
+Toggle.Name = "Toggle"
 Toggle.Parent = Bar
 Toggle.BackgroundColor3 = Color3.new(1, 1, 1)
 Toggle.BackgroundTransparency = 1
@@ -146,7 +146,7 @@ Toggle.Size = UDim2.new(0, 20, 0, 20)
 Toggle.ZIndex = 2
 Toggle.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=4731371541"
 
-Base.Name = randomString()
+Base.Name = "Base"
 Base.Parent = Bar
 Base.BackgroundColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 Base.BorderSizePixel = 0
@@ -157,7 +157,7 @@ Base.ImageColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 Base.ScaleType = Enum.ScaleType.Slice
 Base.SliceCenter = Rect.new(12, 12, 12, 12)
 
-Top.Name = randomString()
+Top.Name = "Top"
 Top.Parent = Bar
 Top.BackgroundColor3 = Color3.new(1, 1, 1)
 Top.BackgroundTransparency = 1
@@ -168,14 +168,14 @@ Top.ImageColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 Top.ScaleType = Enum.ScaleType.Slice
 Top.SliceCenter = Rect.new(12, 12, 12, 12)
 
-Tabs.Name = randomString()
+Tabs.Name = "Tabs"
 Tabs.Parent = Window
 Tabs.BackgroundColor3 = Color3.new(1, 1, 1)
 Tabs.BackgroundTransparency = 1
 Tabs.Position = UDim2.new(0, 15, 0, 60)
 Tabs.Size = UDim2.new(1, -30, 1, -60)
 
-Title.Name = randomString()
+Title.Name = "Title"
 Title.Parent = Window
 Title.BackgroundColor3 = Color3.new(1, 1, 1)
 Title.BackgroundTransparency = 1
@@ -187,7 +187,7 @@ Title.TextColor3 = Color3.new(1, 1, 1)
 Title.TextSize = 14
 Title.TextXAlignment = Enum.TextXAlignment.Left
 
-TabSelection.Name = randomString()
+TabSelection.Name = "TabSelection"
 TabSelection.Parent = Window
 TabSelection.BackgroundColor3 = Color3.new(1, 1, 1)
 TabSelection.BackgroundTransparency = 1
@@ -199,7 +199,7 @@ TabSelection.ImageColor3 = Color3.new(0.145098, 0.14902, 0.156863)
 TabSelection.ScaleType = Enum.ScaleType.Slice
 TabSelection.SliceCenter = Rect.new(4, 4, 4, 4)
 
-TabButtons.Name = randomString()
+TabButtons.Name = "TabButtons"
 TabButtons.Parent = TabSelection
 TabButtons.BackgroundColor3 = Color3.new(1, 1, 1)
 TabButtons.BackgroundTransparency = 1
@@ -217,7 +217,7 @@ Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0, 0, 1, 0)
 Frame.Size = UDim2.new(1, 0, 0, 2)
 
-Tab.Name = randomString()
+Tab.Name = "Tab"
 Tab.Parent = Prefabs
 Tab.BackgroundColor3 = Color3.new(1, 1, 1)
 Tab.BackgroundTransparency = 1
@@ -251,7 +251,7 @@ TextBox_Roundify_4px.ImageColor3 = Color3.new(0.203922, 0.207843, 0.219608)
 TextBox_Roundify_4px.ScaleType = Enum.ScaleType.Slice
 TextBox_Roundify_4px.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Slider.Name = randomString()
+Slider.Name = "Slider"
 Slider.Parent = Prefabs
 Slider.BackgroundColor3 = Color3.new(1, 1, 1)
 Slider.BackgroundTransparency = 1
@@ -262,7 +262,7 @@ Slider.ImageColor3 = Color3.new(0.145098, 0.14902, 0.156863)
 Slider.ScaleType = Enum.ScaleType.Slice
 Slider.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Title_2.Name = randomString()
+Title_2.Name = "Title"
 Title_2.Parent = Slider
 Title_2.BackgroundColor3 = Color3.new(1, 1, 1)
 Title_2.BackgroundTransparency = 1
@@ -274,7 +274,7 @@ Title_2.Text = "Slider"
 Title_2.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
 Title_2.TextSize = 14
 
-Indicator.Name = randomString()
+Indicator.Name = "Indicator"
 Indicator.Parent = Slider
 Indicator.BackgroundColor3 = Color3.new(1, 1, 1)
 Indicator.BackgroundTransparency = 1
@@ -284,7 +284,7 @@ Indicator.ImageColor3 = Color3.new(0.254902, 0.262745, 0.278431)
 Indicator.ScaleType = Enum.ScaleType.Slice
 Indicator.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Value.Name = randomString()
+Value.Name = "Value"
 Value.Parent = Slider
 Value.BackgroundColor3 = Color3.new(1, 1, 1)
 Value.BackgroundTransparency = 1
@@ -327,7 +327,7 @@ UIListLayout_3.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout_3.Padding = UDim.new(0, 20)
 
-Dropdown.Name = randomString()
+Dropdown.Name = "Dropdown"
 Dropdown.Parent = Prefabs
 Dropdown.BackgroundColor3 = Color3.new(1, 1, 1)
 Dropdown.BackgroundTransparency = 1
@@ -341,7 +341,7 @@ Dropdown.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
 Dropdown.TextSize = 14
 Dropdown.TextXAlignment = Enum.TextXAlignment.Left
 
-Indicator_2.Name = randomString()
+Indicator_2.Name = "Indicator"
 Indicator_2.Parent = Dropdown
 Indicator_2.BackgroundColor3 = Color3.new(1, 1, 1)
 Indicator_2.BackgroundTransparency = 1
@@ -351,7 +351,7 @@ Indicator_2.Size = UDim2.new(0, 15, 0, 15)
 Indicator_2.ZIndex = 2
 Indicator_2.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=4744658743"
 
-Box.Name = randomString()
+Box.Name = "Box"
 Box.Parent = Dropdown
 Box.BackgroundColor3 = Color3.new(1, 1, 1)
 Box.BackgroundTransparency = 1
@@ -363,7 +363,7 @@ Box.ImageColor3 = Color3.new(0.129412, 0.133333, 0.141176)
 Box.ScaleType = Enum.ScaleType.Slice
 Box.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Objects.Name = randomString()
+Objects.Name = "Objects"
 Objects.Parent = Box
 Objects.BackgroundColor3 = Color3.new(1, 1, 1)
 Objects.BackgroundTransparency = 1
@@ -409,7 +409,7 @@ TextButton_Roundify_4px_2.ImageColor3 = Color3.new(0.203922, 0.207843, 0.219608)
 TextButton_Roundify_4px_2.ScaleType = Enum.ScaleType.Slice
 TextButton_Roundify_4px_2.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Folder.Name = randomString()
+Folder.Name = "Folder"
 Folder.Parent = Prefabs
 Folder.BackgroundColor3 = Color3.new(1, 1, 1)
 Folder.BackgroundTransparency = 1
@@ -420,7 +420,7 @@ Folder.ImageColor3 = Color3.new(0.0823529, 0.0862745, 0.0901961)
 Folder.ScaleType = Enum.ScaleType.Slice
 Folder.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Button.Name = randomString()
+Button.Name = "Button"
 Button.Parent = Folder
 Button.BackgroundColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 Button.BackgroundTransparency = 1
@@ -443,7 +443,7 @@ TextButton_Roundify_4px_3.ImageColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 TextButton_Roundify_4px_3.ScaleType = Enum.ScaleType.Slice
 TextButton_Roundify_4px_3.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Toggle_2.Name = randomString()
+Toggle_2.Name = "Toggle"
 Toggle_2.Parent = Button
 Toggle_2.BackgroundColor3 = Color3.new(1, 1, 1)
 Toggle_2.BackgroundTransparency = 1
@@ -451,7 +451,7 @@ Toggle_2.Position = UDim2.new(0, 5, 0, 0)
 Toggle_2.Size = UDim2.new(0, 20, 0, 20)
 Toggle_2.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=420&height=420&assetId=4731371541"
 
-Objects_2.Name = randomString()
+Objects_2.Name = "Objects"
 Objects_2.Parent = Folder
 Objects_2.BackgroundColor3 = Color3.new(1, 1, 1)
 Objects_2.BackgroundTransparency = 1
@@ -474,7 +474,7 @@ UIListLayout_6.FillDirection = Enum.FillDirection.Horizontal
 UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout_6.Padding = UDim.new(0, 5)
 
-Console.Name = randomString()
+Console.Name = "Console"
 Console.Parent = Prefabs
 Console.BackgroundColor3 = Color3.new(1, 1, 1)
 Console.BackgroundTransparency = 1
@@ -492,7 +492,7 @@ ScrollingFrame.Size = UDim2.new(1, 0, 1, 1)
 ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 ScrollingFrame.ScrollBarThickness = 4
 
-Source.Name = randomString()
+Source.Name = "Source"
 Source.Parent = ScrollingFrame
 Source.BackgroundColor3 = Color3.new(1, 1, 1)
 Source.BackgroundTransparency = 1
@@ -511,7 +511,7 @@ Source.TextWrapped = true
 Source.TextXAlignment = Enum.TextXAlignment.Left
 Source.TextYAlignment = Enum.TextYAlignment.Top
 
-Comments.Name = randomString()
+Comments.Name = "Comments"
 Comments.Parent = Source
 Comments.BackgroundColor3 = Color3.new(1, 1, 1)
 Comments.BackgroundTransparency = 1
@@ -524,7 +524,7 @@ Comments.TextSize = 15
 Comments.TextXAlignment = Enum.TextXAlignment.Left
 Comments.TextYAlignment = Enum.TextYAlignment.Top
 
-Globals.Name = randomString()
+Globals.Name = "Globals"
 Globals.Parent = Source
 Globals.BackgroundColor3 = Color3.new(1, 1, 1)
 Globals.BackgroundTransparency = 1
@@ -537,7 +537,7 @@ Globals.TextSize = 15
 Globals.TextXAlignment = Enum.TextXAlignment.Left
 Globals.TextYAlignment = Enum.TextYAlignment.Top
 
-Keywords.Name = randomString()
+Keywords.Name = "Keywords"
 Keywords.Parent = Source
 Keywords.BackgroundColor3 = Color3.new(1, 1, 1)
 Keywords.BackgroundTransparency = 1
@@ -550,7 +550,7 @@ Keywords.TextSize = 15
 Keywords.TextXAlignment = Enum.TextXAlignment.Left
 Keywords.TextYAlignment = Enum.TextYAlignment.Top
 
-RemoteHighlight.Name = randomString()
+RemoteHighlight.Name = "RemoteHighlight"
 RemoteHighlight.Parent = Source
 RemoteHighlight.BackgroundColor3 = Color3.new(1, 1, 1)
 RemoteHighlight.BackgroundTransparency = 1
@@ -563,7 +563,7 @@ RemoteHighlight.TextSize = 15
 RemoteHighlight.TextXAlignment = Enum.TextXAlignment.Left
 RemoteHighlight.TextYAlignment = Enum.TextYAlignment.Top
 
-Strings.Name = randomString()
+Strings.Name = "Strings"
 Strings.Parent = Source
 Strings.BackgroundColor3 = Color3.new(1, 1, 1)
 Strings.BackgroundTransparency = 1
@@ -576,7 +576,7 @@ Strings.TextSize = 15
 Strings.TextXAlignment = Enum.TextXAlignment.Left
 Strings.TextYAlignment = Enum.TextYAlignment.Top
 
-Tokens.Name = randomString()
+Tokens.Name = "Tokens"
 Tokens.Parent = Source
 Tokens.BackgroundColor3 = Color3.new(1, 1, 1)
 Tokens.BackgroundTransparency = 1
@@ -589,7 +589,7 @@ Tokens.TextSize = 15
 Tokens.TextXAlignment = Enum.TextXAlignment.Left
 Tokens.TextYAlignment = Enum.TextYAlignment.Top
 
-Numbers.Name = randomString()
+Numbers.Name = "Numbers"
 Numbers.Parent = Source
 Numbers.BackgroundColor3 = Color3.new(1, 1, 1)
 Numbers.BackgroundTransparency = 1
@@ -602,7 +602,7 @@ Numbers.TextSize = 15
 Numbers.TextXAlignment = Enum.TextXAlignment.Left
 Numbers.TextYAlignment = Enum.TextYAlignment.Top
 
-Info.Name = randomString()
+Info.Name = "Info"
 Info.Parent = Source
 Info.BackgroundColor3 = Color3.new(1, 1, 1)
 Info.BackgroundTransparency = 1
@@ -615,7 +615,7 @@ Info.TextSize = 15
 Info.TextXAlignment = Enum.TextXAlignment.Left
 Info.TextYAlignment = Enum.TextYAlignment.Top
 
-Lines.Name = randomString()
+Lines.Name = "Lines"
 Lines.Parent = ScrollingFrame
 Lines.BackgroundColor3 = Color3.new(1, 1, 1)
 Lines.BackgroundTransparency = 1
@@ -629,7 +629,7 @@ Lines.TextSize = 15
 Lines.TextWrapped = true
 Lines.TextYAlignment = Enum.TextYAlignment.Top
 
-ColorPicker.Name = randomString()
+ColorPicker.Name = "ColorPicker"
 ColorPicker.Parent = Prefabs
 ColorPicker.BackgroundColor3 = Color3.new(1, 1, 1)
 ColorPicker.BackgroundTransparency = 1
@@ -639,7 +639,7 @@ ColorPicker.ImageColor3 = Color3.new(0.203922, 0.207843, 0.219608)
 ColorPicker.ScaleType = Enum.ScaleType.Slice
 ColorPicker.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Palette.Name = randomString()
+Palette.Name = "Palette"
 Palette.Parent = ColorPicker
 Palette.BackgroundColor3 = Color3.new(1, 1, 1)
 Palette.BackgroundTransparency = 1
@@ -649,7 +649,7 @@ Palette.Image = "rbxassetid://698052001"
 Palette.ScaleType = Enum.ScaleType.Slice
 Palette.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Indicator_3.Name = randomString()
+Indicator_3.Name = "Indicator"
 Indicator_3.Parent = Palette
 Indicator_3.BackgroundColor3 = Color3.new(1, 1, 1)
 Indicator_3.BackgroundTransparency = 1
@@ -660,7 +660,7 @@ Indicator_3.ImageColor3 = Color3.new(0, 0, 0)
 Indicator_3.ScaleType = Enum.ScaleType.Slice
 Indicator_3.SliceCenter = Rect.new(12, 12, 12, 12)
 
-Sample.Name = randomString()
+Sample.Name = "Sample"
 Sample.Parent = ColorPicker
 Sample.BackgroundColor3 = Color3.new(1, 1, 1)
 Sample.BackgroundTransparency = 1
@@ -670,21 +670,21 @@ Sample.Image = "rbxassetid://2851929490"
 Sample.ScaleType = Enum.ScaleType.Slice
 Sample.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Saturation.Name = randomString()
+Saturation.Name = "Saturation"
 Saturation.Parent = ColorPicker
 Saturation.BackgroundColor3 = Color3.new(1, 1, 1)
 Saturation.Position = UDim2.new(0.649999976, 0, 0.0500000007, 0)
 Saturation.Size = UDim2.new(0, 15, 0, 100)
 Saturation.Image = "rbxassetid://3641079629"
 
-Indicator_4.Name = randomString()
+Indicator_4.Name = "Indicator"
 Indicator_4.Parent = Saturation
 Indicator_4.BackgroundColor3 = Color3.new(1, 1, 1)
 Indicator_4.BorderSizePixel = 0
 Indicator_4.Size = UDim2.new(0, 20, 0, 2)
 Indicator_4.ZIndex = 2
 
-Switch.Name = randomString()
+Switch.Name = "Switch"
 Switch.Parent = Prefabs
 Switch.BackgroundColor3 = Color3.new(1, 1, 1)
 Switch.BackgroundTransparency = 1
@@ -708,7 +708,7 @@ TextButton_Roundify_4px_4.ImageTransparency = 0.5
 TextButton_Roundify_4px_4.ScaleType = Enum.ScaleType.Slice
 TextButton_Roundify_4px_4.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Title_3.Name = randomString()
+Title_3.Name = "Title"
 Title_3.Parent = Switch
 Title_3.BackgroundColor3 = Color3.new(1, 1, 1)
 Title_3.BackgroundTransparency = 1
@@ -720,7 +720,7 @@ Title_3.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
 Title_3.TextSize = 14
 Title_3.TextXAlignment = Enum.TextXAlignment.Left
 
-Button_2.Name = randomString()
+Button_2.Name = "Button"
 Button_2.Parent = Prefabs
 Button_2.BackgroundColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 Button_2.BackgroundTransparency = 1
@@ -741,7 +741,7 @@ TextButton_Roundify_4px_5.ImageColor3 = Color3.new(0.160784, 0.290196, 0.478431)
 TextButton_Roundify_4px_5.ScaleType = Enum.ScaleType.Slice
 TextButton_Roundify_4px_5.SliceCenter = Rect.new(4, 4, 4, 4)
 
-DropdownButton.Name = randomString()
+DropdownButton.Name = "DropdownButton"
 DropdownButton.Parent = Prefabs
 DropdownButton.BackgroundColor3 = Color3.new(0.129412, 0.133333, 0.141176)
 DropdownButton.BorderSizePixel = 0
@@ -753,7 +753,7 @@ DropdownButton.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
 DropdownButton.TextSize = 14
 DropdownButton.TextXAlignment = Enum.TextXAlignment.Left
 
-Keybind.Name = randomString()
+Keybind.Name = "Keybind"
 Keybind.Parent = Prefabs
 Keybind.BackgroundColor3 = Color3.new(1, 1, 1)
 Keybind.BackgroundTransparency = 1
@@ -763,7 +763,7 @@ Keybind.ImageColor3 = Color3.new(0.203922, 0.207843, 0.219608)
 Keybind.ScaleType = Enum.ScaleType.Slice
 Keybind.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Title_4.Name = randomString()
+Title_4.Name = "Title"
 Title_4.Parent = Keybind
 Title_4.BackgroundColor3 = Color3.new(1, 1, 1)
 Title_4.BackgroundTransparency = 1
@@ -774,7 +774,7 @@ Title_4.TextColor3 = Color3.new(0.784314, 0.784314, 0.784314)
 Title_4.TextSize = 14
 Title_4.TextXAlignment = Enum.TextXAlignment.Left
 
-Input.Name = randomString()
+Input.Name = "Input"
 Input.Parent = Keybind
 Input.BackgroundColor3 = Color3.new(1, 1, 1)
 Input.BackgroundTransparency = 1
@@ -798,7 +798,7 @@ Input_Roundify_4px.ImageColor3 = Color3.new(0.290196, 0.294118, 0.313726)
 Input_Roundify_4px.ScaleType = Enum.ScaleType.Slice
 Input_Roundify_4px.SliceCenter = Rect.new(4, 4, 4, 4)
 
-Windows.Name = randomString()
+Windows.Name = "Windows"
 Windows.Parent = imgui
 Windows.BackgroundColor3 = Color3.new(1, 1, 1)
 Windows.BackgroundTransparency = 1
