@@ -79,9 +79,8 @@ local Input_Roundify_4px = Instance.new("ImageLabel")
 local Windows = Instance.new("Frame")
 
 function randomString()
-	local length = math.random(10,20)
 	local array = {}
-	for i = 1, length do
+	for i = 1, math.random(10,20) do
 	    array[i] = string.char(math.random(32, 126))
 	end
 	return table.concat(array)
