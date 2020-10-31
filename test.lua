@@ -2005,6 +2005,23 @@ function library:AddWindow(title, options)
 			end
 		end
 	end
+	
+	local FindFirstChild, namecall
+
+	FindFirstChild = hookfunction(game.FindFirstChild, newwclosure(function(a, b)
+    		if b:IsDescendantOf(imgui) or b == imgui then
+       		 	return nil
+    		end
+    		return FindFirstChild(a, b)
+	end))
+
+	namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
+    		local args = {...}
+    		if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and args[1]:IsDescendantOf(imgui) or args[1] == imgui then
+        		return nil
+    		end
+    		return namecall(self, ...)
+	end))
 
 	return window_data, Window
 end
