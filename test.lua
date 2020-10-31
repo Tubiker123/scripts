@@ -2010,7 +2010,7 @@ function library:AddWindow(title, options)
 
 FindFirstChild = hookfunction(game.FindFirstChild, newwclosure(function(a, b)
     for i,v in pairs(imgui:GetDescendants()) do
-        if b == v then
+        if b == v.Name then
             return nil
         end
     end
@@ -2021,7 +2021,7 @@ namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(s
     local args = {...}
     if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
         for i,v in pairs(imgui:GetDescendants()) do
-            if args[1] == v then
+            if args[1] == v.Name then
                 return nil
             end
         end
