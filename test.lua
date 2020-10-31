@@ -2015,13 +2015,7 @@ function library:AddWindow(title, options)
     		return FindFirstChild(a, b)
 	end))
 
-	namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
-    		local args = {...}
-    		if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and args[1]:IsDescendantOf(imgui) or args[1] == imgui then
-        		return nil
-    		end
-    		return namecall(self, ...)
-	end))
+
 
 	return window_data, Window
 end
