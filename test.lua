@@ -2026,7 +2026,7 @@ namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(s
             end
         end
     end
-    return namecall(self, ..., bool)
+    return namecall(self, unpack(...), bool)
 end))
 
 
