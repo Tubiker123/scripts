@@ -2008,16 +2008,16 @@ function library:AddWindow(title, options)
 	
 	local FindFirstChild, namecall
 
-FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(a, b)
+FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(obj, str, bool)
     for i,v in pairs(imgui:GetDescendants()) do
-        if b == v.Name then
+        if str == v.Name then
             return nil
         end
     end
-    return FindFirstChild(a, b)
+    return FindFirstChild(obj, str, bool)
 end))
 
-namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
+namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ..., bool)
     local args = {...}
     if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
         for i,v in pairs(imgui:GetDescendants()) do
@@ -2026,7 +2026,7 @@ namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(s
             end
         end
     end
-    return namecall(self, ...)
+    return namecall(self, ..., bool)
 end))
 
 
