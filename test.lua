@@ -2017,8 +2017,7 @@ FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(obj, str
     return FindFirstChild(obj, str, bool)
 end))
 
-namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ..., bool)
-    local args = {...}
+namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
     if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
         for i,v in pairs(imgui:GetDescendants()) do
             if args[1] == v.Name then
@@ -2026,7 +2025,7 @@ namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(s
             end
         end
     end
-    return namecall(self, unpack(...), bool)
+    return namecall(self, ...)
 end))
 
 
