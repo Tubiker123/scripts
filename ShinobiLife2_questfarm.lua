@@ -19,7 +19,7 @@ local player = game:GetService("Players").LocalPlayer
 local heartbeat = game:GetService("RunService").Heartbeat
 local mobmission
 
-game:GetService("ScriptContext"):SetTimeout(.01)
+hookfunction(getrenv().print, newcclosure(function() end)
 
 local function getQuest()
     for i,v in next, workspace.missiongivers:children() do
@@ -35,8 +35,8 @@ player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
-while getgenv().options.autofarm do
-    if getgenv().options.autorankup and player.statz.lvl.lvl.Value == 1000 then
+while options.autofarm do
+    if options.autorankup and player.statz.lvl.lvl.Value == 1000 then
         player.startevent:FireServer("rankup")
     end
     pcall(function()
