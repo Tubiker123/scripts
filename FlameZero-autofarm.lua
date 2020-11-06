@@ -73,7 +73,7 @@ newindex = hookfunction(getrawmetatable(game).__newindex, newcclosure(function(a
     return newindex(a, b, c)
 end))
 
-spawn(function()
+coroutine.wrap(function()
     while wait() do
         if array.farm and player.PlayerFolder.QuestMax.Value == 0 then
             pcall(function()
@@ -82,7 +82,7 @@ spawn(function()
             end)
         end
     end
-end)
+end)()
 
 while wait() do
     if array.farm then
