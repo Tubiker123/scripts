@@ -4,7 +4,10 @@
 	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
 --]]
 
-if game:GetService("CoreGui"):FindFirstChild("ScreenGui") then return end
+do
+	local imgui = game:GetService("CoreGui"):FindFirstChild("imgui")
+	if imgui then imgui:Destroy() end
+end
 
 local imgui = Instance.new("ScreenGui")
 pcall(function() syn.protect_gui(imgui) end)
@@ -88,6 +91,7 @@ function randomString()
 	return table.concat(array)
 end
 
+imgui.Name = "imgui"
 imgui.Parent = game:GetService("CoreGui")
 
 Prefabs.Name = "Prefabs"
