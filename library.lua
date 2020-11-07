@@ -4,6 +4,8 @@
 	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
 --]]
 
+if game:GetService("CoreGui"):FindFirstChild("ScreenGui") then return end
+
 local imgui = Instance.new("ScreenGui")
 pcall(function() syn.protect_gui(imgui) end)
 local Prefabs = Instance.new("Frame")
