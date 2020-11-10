@@ -909,7 +909,7 @@ local function ripple(button, x, y)
 end
 
 local windows = 0
-library = {}
+local library = {}
 
 local function format_windows()
 	local ull = Prefabs:FindFirstChild("UIListLayout"):Clone()
@@ -2004,29 +2004,6 @@ function library:AddWindow(title, options)
 			end
 		end
 	end
-	
-	local FindFirstChild, namecall
 
-	FindFirstChild = hookfunction(game.FindFirstChild, newcclosure(function(obj, str, bool)
-    		for i,v in pairs(imgui:GetDescendants()) do
-        		if str == v.Name or str == imgui.Name then
-            			return nil
-        		end
-    		end
-    		return FindFirstChild(obj, str, bool)
-	end))
-
-	namecall = hookfunction(getrawmetatable(game).__namecall, newcclosure(function(self, ...)
-		local args = {...}
-    		if (getnamecallmethod():lower():match("findfirst") or getnamecallmethod():lower() == "waitforchild") and self == game then
-        		for i,v in pairs(imgui:GetDescendants()) do
-            			if args[1] == v.Name or args[1] == imgui.Name then
-                			return nil
-            			end
-        		end
-    		end
-    		return namecall(self, ...)
-	end))
-
-	return window_data, Window
+	return library
 end
