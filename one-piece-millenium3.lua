@@ -1,3 +1,7 @@
+--[[
+    Made by gS
+]]
+
 loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/z4gs/scripts/master/library.lua"))()
     
 local gui = library:AddWindow("One Piece Millenium 3", {
