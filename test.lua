@@ -4,6 +4,11 @@
 	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
 --]]
 
+do
+	local imgui = game:GetService("CoreGui"):FindFirstChild("imgui")
+	if imgui then imgui:Destroy() end
+end
+
 local imgui = Instance.new("ScreenGui")
 pcall(function() syn.protect_gui(imgui) end)
 local Prefabs = Instance.new("Frame")
@@ -86,6 +91,7 @@ function randomString()
 	return table.concat(array)
 end
 
+imgui.Name = "imgui"
 imgui.Parent = game:GetService("CoreGui")
 
 Prefabs.Name = "Prefabs"
@@ -2005,5 +2011,5 @@ function library:AddWindow(title, options)
 		end
 	end
 
-	return library
+	return window_data, Window
 end
