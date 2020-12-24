@@ -12,7 +12,6 @@ local heartbeat = game:GetService("RunService").Heartbeat
 local questgiver,mob,farm,func
 local player = game:GetService("Players").LocalPlayer
 local quests = {}
-local tab1 = ui.New({Title = "Main"})
 
 for i,v in pairs(game:GetService("ReplicatedStorage").Package.Quests:children()) do
     table.insert(quests, v.Name)
@@ -24,46 +23,45 @@ for i,v in pairs(getgc()) do
     end
 end
 
+local tab1 = ui.New({Title = "Main"})
+
 tab1.Dropdown({
-	Text = "Target",
+    Text = "Target",
     Callback = function(opt)
         questgiver, mob = opt, game:GetService("ReplicatedStorage").Package.Quests[opt].Target.Value
-	end,
-	Options = quests
+    end,
+    Options = quests
 })
 
 tab1.Toggle({
-	Text = "Autofarm",
+    Text = "Autofarm",
     Callback = function(bool)
-        farm = bool   
- 	end,
+        farm = bool
+        while farm and heartbeat:wait() do
+            pcall(function()
+                if farm and not player.PlayerGui.HUD.Frames.Quest.Visible then
+                    game:GetService("ReplicatedStorage").Package.Events.GetQuest:InvokeServer(questgiver)
+                    player.PlayerGui.HUD.Frames.Quest.Visible = true
+                end
+                if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
+                    player.Character.HumanoidRootPart.Title:Destroy()
+                    player.Character.Head.face:Destroy()
+                    player.Character.Stats.Speed:Destroy()
+                    for i,v in pairs(player.Character:children()) do
+                        if v:isA("Accessory") or v:isA("Shirt") or v:isA("Pants") or v:isA("ShirtGraphic") then
+                            v:Destroy()
+                        end
+                    end
+                end
+            end)
+        end
+    end,
     Enabled = false
 })
 
 player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
-
-coroutine.wrap(function()
-    while heartbeat:wait() do
-        pcall(function()
-            if farm and not player.PlayerGui.HUD.Frames.Quest.Visible then
-                game:GetService("ReplicatedStorage").Package.Events.GetQuest:InvokeServer(questgiver)
-                player.PlayerGui.HUD.Frames.Quest.Visible = true
-            end
-            if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
-                player.Character.HumanoidRootPart.Title:Destroy()
-		player.Character.Head.face:Destroy()
-		player.Character.Stats.Speed:Destroy()
-                for i,v in pairs(player.Character:children()) do
-                    if v.ClassName == "Accessory" or v.ClassName == "Shirt" or v.ClassName == "Pants" or v.ClassName == "ShirtGraphic" then
-                        v:Destroy()
-                    end
-                end
-            end
-        end)
-    end
-end)()
 
 while heartbeat:wait() do
     if farm then
