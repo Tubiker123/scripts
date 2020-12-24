@@ -8,12 +8,10 @@ local ui = library.Load({
 	Theme = "Dark",
 })
 
-local punch = game:GetService("ReplicatedStorage").Package.Events.Combat
 local heartbeat = game:GetService("RunService").Heartbeat
-local questgiver,mob,farm
+local questgiver,mob,farm,func
 local player = game:GetService("Players").LocalPlayer
 local quests = {}
-local func
 local tab1 = ui.New({Title = "Main"})
 
 for i,v in pairs(game:GetService("ReplicatedStorage").Package.Quests:children()) do
