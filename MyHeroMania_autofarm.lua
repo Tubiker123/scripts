@@ -1,11 +1,11 @@
 local library = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local ui = library.Load({
-	Title = "My Hero Mania",
-	Style = 1,
-	SizeX = 300,
-	SizeY = 300,
-	Theme = "Dark",
+   Title = "My Hero Mania",
+   Style = 1,
+   SizeX = 300,
+   SizeY = 300,
+   Theme = "Dark",
 })
 
 local heartbeat = game:GetService("RunService").Heartbeat
