@@ -1,15 +1,15 @@
 local library = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 
 local ui = library.Load({
-   Title = "My Hero Mania",
-   Style = 1,
-   SizeX = 300,
-   SizeY = 300,
-   Theme = "Dark",
+	Title = "My Hero Mania",
+	Style = 1,
+	SizeX = 300,
+	SizeY = 300,
+	Theme = "Dark",
 })
 
 local heartbeat = game:GetService("RunService").Heartbeat
-local questgiver,mob,farm,func
+local questgiver,mob,farm,func,old,infdash
 local player = game:GetService("Players").LocalPlayer
 local quests = {}
 
@@ -24,6 +24,7 @@ for i,v in pairs(getgc()) do
 end
 
 local tab1 = ui.New({Title = "Main"})
+local tab2 = ui.New({Title = "Misc"})
 
 tab1.Dropdown({
     Text = "Target",
@@ -37,13 +38,13 @@ tab1.Toggle({
     Text = "Autofarm",
     Callback = function(bool)
         farm = bool
-        while farm and heartbeat:wait() do
+        while farm and wait() do
             pcall(function()
-                if farm and not player.PlayerGui.HUD.Frames.Quest.Visible then
+                if not player.PlayerGui.HUD.Frames.Quest.Visible then
                     game:GetService("ReplicatedStorage").Package.Events.GetQuest:InvokeServer(questgiver)
                     player.PlayerGui.HUD.Frames.Quest.Visible = true
                 end
-                if player.Character.HumanoidRootPart:FindFirstChild("Title") and farm then
+                if player.Character.HumanoidRootPart.Title and farm then
                     player.Character.HumanoidRootPart.Title:Destroy()
                     player.Character.Head.face:Destroy()
                     player.Character.Stats.Speed:Destroy()
@@ -58,6 +59,21 @@ tab1.Toggle({
     end,
     Enabled = false
 })
+
+tab2.Toggle({
+    Text = "Inf dash",
+    Callback = function(bool)
+        infdash = bool
+    end,
+    Enabled = false
+})
+
+old = hookfunction(wait, function(...)
+    if debug.traceback():find("Input:453") and infdash then
+        return 0
+    end
+    return old(...)
+end)
 
 player.Idled:connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
