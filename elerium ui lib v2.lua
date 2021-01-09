@@ -4,8 +4,7 @@
 	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
 --]]
 
-local imgui = Instance.new("ScreenGui", workspace)
-pcall(function() syn.protect_gui(imgui) end)
+local imgui = Instance.new("ScreenGui")
 imgui.DisplayOrder = 1
 local Prefabs = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
