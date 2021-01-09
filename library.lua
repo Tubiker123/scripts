@@ -10,7 +10,6 @@ do
 end
 
 local imgui = Instance.new("ScreenGui")
-pcall(function() syn.protect_gui(imgui) end)
 local Prefabs = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
 local Window = Instance.new("ImageLabel")
@@ -82,14 +81,6 @@ local Title_4 = Instance.new("TextLabel")
 local Input = Instance.new("TextButton")
 local Input_Roundify_4px = Instance.new("ImageLabel")
 local Windows = Instance.new("Frame")
-
-function randomString()
-	local array = {}
-	for i = 1, math.random(10,20) do
-	    array[i] = string.char(math.random(32, 126))
-	end
-	return table.concat(array)
-end
 
 imgui.Name = "imgui"
 imgui.Parent = game:GetService("CoreGui")
