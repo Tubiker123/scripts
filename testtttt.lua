@@ -345,7 +345,7 @@ Indicator_2.Position = UDim2.new(0.899999976, -10, 0.100000001, 0)
 Indicator_2.Rotation = -90
 Indicator_2.Size = UDim2.new(0, 15, 0, 15)
 Indicator_2.ZIndex = 2
-Indicator_2.Image = "rbxassetid://4731371527"
+Indicator_2.Image = "rbxassetid://4744658732"
 
 Box.Name = "Box"
 Box.Parent = Dropdown
