@@ -1,9 +1,3 @@
---[[
-	ui-engine-v2
-	version 1.3a
-	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
---]]
-
 do
 	local imgui = game:GetService("CoreGui"):FindFirstChild("imgui")
 	if imgui then imgui:Destroy() end
