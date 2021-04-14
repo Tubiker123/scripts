@@ -1,1 +1,1 @@
-print("a")
+if 1 then end
